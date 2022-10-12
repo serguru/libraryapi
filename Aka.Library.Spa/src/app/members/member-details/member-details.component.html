@@ -38,15 +38,16 @@
     </form>
   </div>
 
-  <mat-tab-group>
+  <mat-tab-group [selectedIndex]="selectedIndex"
+    (selectedIndexChange)="selectedIndex = $event">
     <mat-tab label="Currently Signed Out">
-      <div *ngIf="signedout$ | async as signedout">
-        <app-member-book-list member-books="signedout"></app-member-book-list>
+      <div>
+        <app-checked-out-books *ngIf="selectedIndex === 0"></app-checked-out-books>
       </div>
     </mat-tab>
     <mat-tab label="Sign Out History">
-      <div *ngIf="bookhistory$ | async as bookhistory">
-        <app-member-book-list member-books="bookhistory"></app-member-book-list>
+      <div>
+        <app-checked-out-history *ngIf="selectedIndex === 1"></app-checked-out-history>
       </div>
     </mat-tab>
   </mat-tab-group>

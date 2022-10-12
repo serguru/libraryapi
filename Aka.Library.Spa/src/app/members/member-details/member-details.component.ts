@@ -26,8 +26,7 @@ export class MemberDetailsComponent implements OnInit {
   postalCode: string;
   memberForm: FormGroup;
   member$: Observable<Member>;
-  bookhistory$: Observable<MemberBook[]>;
-  signedout$: Observable<MemberBook[]>;
+  selectedIndex: number = 0;
 
   constructor(
     private route: ActivatedRoute,
