@@ -115,7 +115,8 @@ export class BookDetailsComponent implements OnInit {
       catchError(err => {
         return throwError(err);
       })
-    );
+    )
+    .subscribe();
   }
 
 }

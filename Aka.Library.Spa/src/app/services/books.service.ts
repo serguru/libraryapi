@@ -4,7 +4,9 @@ import { Book } from '../shared/book';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { SignedOutBook } from '../shared/signed-out-book';
-import { map } from 'lodash';
+//  TR1
+//  import { map } from 'lodash';
+import { map } from 'rxjs/operators';
 import { GoogleBooksMetadata } from '../shared/google-books-metadata';
 import { Observable } from 'rxjs/internal/Observable';
 import { throwError } from 'rxjs/internal/observable/throwError';
@@ -95,7 +97,6 @@ export class BooksService {
 
     // return this.http.get(url);
     return throwError('Funtion not implemented');
-
   }
 
 }

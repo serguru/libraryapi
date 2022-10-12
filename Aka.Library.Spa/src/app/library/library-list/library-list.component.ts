@@ -26,7 +26,10 @@ export class LibraryListComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    this.libraryService.getLibraries().subscribe(data => this.dataSource.data = data);
+    this.libraryService
+      .getLibraries()
+      .subscribe(data => 
+        this.dataSource.data = data);
   }
 
   selectRow(library: Library) {

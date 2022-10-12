@@ -1,5 +1,5 @@
 import { environment } from './../../environments/environment';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Member } from '../members/interfaces/member';
@@ -9,7 +9,21 @@ import { tap } from 'rxjs/operators';
 export class AuthService {
 
   apiUrl: string;
-  isAuthenticated: boolean;
+  
+  //  TR2
+  private _isAuthenticated: boolean = false;
+  get isAuthenticated(): boolean {
+    return this._isAuthenticated;
+  }
+  set isAuthenticated(value: boolean) {
+    if (this.isAuthenticated === value) {
+      return;
+    }
+    this._isAuthenticated = value;
+    this.loggedIn.next(this.isAuthenticated);
+  }
+
+
   currentMember: Member = null;
 
   constructor(private http: HttpClient) {
@@ -18,7 +32,7 @@ export class AuthService {
   }
 
   private loggedIn = new BehaviorSubject<boolean>(false);
-
+  
   get isLoggedIn() {
     return this.loggedIn.asObservable();
   }

@@ -5,5 +5,8 @@
 
 .example-container {
   display: inline-flex;
-  flex-direction: row;
+  // TR8
+  //flex-direction: row;
+  flex-direction: column;
+  width: 500px;
 }
